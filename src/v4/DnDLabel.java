@@ -92,14 +92,20 @@ DragSourceListener, DragGestureListener, DropTargetListener {
 
 @SuppressWarnings("serial")
 class MyTransferHandler extends TransferHandler {
+    /**
+     * @param comp
+     * @param t
+     * @param p
+     * @return
+     */
     public boolean importData(JComponent comp, Transferable t, Point p){
         return true;
         
-        try {
+        /*try {
             DnDLabel tempLabel = (DnDLabel)t.getTransferData(new DataFlavor(DnDLabel.class, "JLabel"));
             DnDLabel[] thing;
             thing[0] = tempLabel;
-        } 
+        }*/ 
 
     }
 }

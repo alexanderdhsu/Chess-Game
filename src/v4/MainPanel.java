@@ -45,7 +45,7 @@ public class MainPanel extends JPanel
         /**Attempt to add image to JPanel**/
         /*BufferedImage King = ImageIO.read(new File("src/images/kingBlack.png"));
         JLabel kingLabel = new JLabel(new ImageIcon(King));
-        Coordinates[4][0].add(kingLabel);*/
+        Squares[4][0].add(kingLabel);*/
         /**Attempt to add a draggable button on top of a square**/
         /*JButton button = new JButton("this is the test");
         TransferHandler transfer = new TransferHandler("test");
@@ -57,20 +57,20 @@ public class MainPanel extends JPanel
                 handle.exportAsDrag(button, e, TransferHandler.COPY);
             }
         });
-        Coordinates[2][0].add(button);*/
+        Squares[2][0].add(button);*/
         /**Attempt to add a customized button class that is draggable**/
         /*DnDButton button = new DnDButton("This is a test");
-        Coordinates[1][0].add(button);
+        Squares[1][0].add(button);
         DnDButton button2 = new DnDButton("This is another test");
-        Coordinates[6][0].add(button2);*/
+        Squares[6][0].add(button2);*/
         /**Attempt to do something.**/
         /*JLabel king = new JLabel("King");
-        Coordinates[4][0].add(king);
+        Squares[4][0].add(king);
         JLabel queen = new JLabel("Queen");
         queen.setForeground(Color.white);
-        Coordinates[3][0].add(queen);
-        Coordinates[3][0].setEnabled(true);
-        Coordinates[3][0].setTransferHandler(new ListTransferHandler());*/
+        Squares[3][0].add(queen);
+        Squares[3][0].setEnabled(true);
+        Squares[3][0].setTransferHandler(new ListTransferHandler());*/
     }
     
     public boolean canImport(TransferHandler.TransferSupport info) {

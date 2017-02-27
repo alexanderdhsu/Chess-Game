@@ -62,14 +62,14 @@ public class MainPanel extends JPanel
         /*board.setLayout(new GridLayout(8,8));
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 8; x++) {
-                Coordinates[x][y] = new JPanel();
-                Coordinates[x][y].setLayout(new FlowLayout());
-                board.add(Coordinates[x][y]);
+                Squares[x][y] = new JPanel();
+                Squares[x][y].setLayout(new FlowLayout());
+                board.add(Squares[x][y]);
                 if ((x%2 == 1) && (y%2 == 0)) {
-                    Coordinates[x][y].setBackground(Color.black);
+                    Squares[x][y].setBackground(Color.black);
                 }
                 if ((x%2 == 0) && (y%2 == 1)) {
-                    Coordinates[x][y].setBackground(Color.black);
+                    Squares[x][y].setBackground(Color.black);
                 }
             }
         }*/
