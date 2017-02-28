@@ -1,28 +1,27 @@
-package version7;
+package ca.bcit.comp2526.a2a;
 
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 /**
- * Creates and holds information about bishop pieces.
+ * Creates and holds information about pawn pieces.
  * @author Alex
- * @version 7
+ * @version 0.7
  */
 
-public class Bishop extends Pieces {
+public class Pawn extends Pieces {
     boolean killed;
     String owner;
     Point2D currentPos;
     int pieceId;
     JLabel imageLabel = new JLabel();
     ImageIcon blackPiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
-            + "Java/Chess-Game/src/images/bishopBlack.png"
-            ).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            + "Java/Chess-Game/src/images/pawnBlack.png"
+            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
     ImageIcon whitePiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
-            + "Java/Chess-Game/src/images/bishopWhite.png"
-            ).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            + "Java/Chess-Game/src/images/pawnWhite.png"
+            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
     /**
      * Constructor.
      * @param color as a string
@@ -31,7 +30,7 @@ public class Bishop extends Pieces {
      * @param piecez as an int
      */
     
-    public Bishop(String color, int piecex, int piecey, int piecez) {
+    public Pawn(String color, int piecex, int piecey, int piecez) {
         killed = false;
         owner = color;
         currentPos = new Point2D.Double(piecex,piecey);

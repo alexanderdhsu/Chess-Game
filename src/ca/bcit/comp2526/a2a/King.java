@@ -1,27 +1,28 @@
-package version7;
+package ca.bcit.comp2526.a2a;
 
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 /**
- * Creates and holds information about knight pieces.
+ * Creates and holds information about king pieces.
  * @author Alex
- * @version 7
+ * @version 0.7
  */
 
-public class Knight extends Pieces {
+public class King extends Pieces {
     boolean killed;
     String owner;
     Point2D currentPos;
     int pieceId;
     JLabel imageLabel = new JLabel();
     ImageIcon blackPiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
-            + "Java/Chess-Game/src/images/knightBlack.png"
-            ).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            + "Java/Chess-Game/src/images/kingBlack.png"
+            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
     ImageIcon whitePiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
-            + "Java/Chess-Game/src/images/knightWhite.png"
-            ).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            + "Java/Chess-Game/src/images/kingWhite.png"
+            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
+    
     /**
      * Constructor.
      * @param color as a string
@@ -29,8 +30,7 @@ public class Knight extends Pieces {
      * @param piecey as an int
      * @param piecez as an int
      */
-    
-    public Knight(String color, int piecex, int piecey, int piecez) {
+    public King(String color, int piecex, int piecey, int piecez) {
         killed = false;
         owner = color;
         currentPos = new Point2D.Double(piecex,piecey);
@@ -66,5 +66,4 @@ public class Knight extends Pieces {
     JLabel getImage() {
         return imageLabel;
     }
-
 }

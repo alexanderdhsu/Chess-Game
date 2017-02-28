@@ -1,4 +1,4 @@
-package version7;
+package ca.bcit.comp2526.a2a;
 
 import java.awt.Image;
 import java.awt.geom.Point2D;
@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 /**
  * Creates and holds information about queen pieces.
  * @author Alex
- * @version 7
+ * @version 0.7
  */
 
 public class Queen extends Pieces {
@@ -18,10 +18,10 @@ public class Queen extends Pieces {
     JLabel imageLabel = new JLabel();
     ImageIcon blackPiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
             + "Java/Chess-Game/src/images/queenBlack.png"
-            ).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
     ImageIcon whitePiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
             + "Java/Chess-Game/src/images/queenWhite.png"
-            ).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
     /**
      * Constructor.
      * @param color as a string

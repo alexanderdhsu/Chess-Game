@@ -1,8 +1,13 @@
-package version7;
+package ca.bcit.comp2526.a2a;
 
 import java.awt.Dimension;
 import java.io.IOException;
 import javax.swing.JFrame;
+/**
+ * Creates a single chess game and sets up the board with pieces.
+ * @author Alex
+ * @version 0.7
+ */
 
 public class Chess {
 
@@ -18,7 +23,8 @@ public class Chess {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         chessGame.setPreferredSize(new Dimension(1000,1000));
         chessGame.setupBoard();
-        chessGame.setupPieces();
+        chessGame.setupWhitePieces();
+        chessGame.setupBlackPieces();
         frame.getContentPane().add(chessGame);
         frame.pack();
         frame.setVisible(true);
