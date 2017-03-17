@@ -1,62 +1,62 @@
 package ca.bcit.comp2526.a2a;
 
-import java.awt.Image;
-import java.awt.geom.Point2D;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
 /**
  * Creates and holds information about king pieces.
  * @author Alex
- * @version 0.7
+ * @version 1.0
  */
-
-public class King extends Pieces {
-    boolean killed;
-    String owner;
-    Point2D currentPos;
-    int pieceId;
+@SuppressWarnings("serial")
+public class King extends Piece {
     JLabel imageLabel = new JLabel();
-    ImageIcon blackPiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
-            + "Java/Chess-Game/src/images/kingBlack.png"
-            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
-    ImageIcon whitePiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
-            + "Java/Chess-Game/src/images/kingWhite.png"
-            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
+    ImageIcon blackPiece = new ImageIcon("src/images/kingBlack.png");
+    ImageIcon whitePiece = new ImageIcon("src/images/kingWhite.png");
+    boolean firstMove;
     
     /**
-     * Constructor.
-     * @param color as a string
+     * Constructor. x and y begin from 0.
      * @param piecex as an int
      * @param piecey as an int
      * @param piecez as an int
      */
-    public King(String color, int piecex, int piecey, int piecez) {
-        killed = false;
-        owner = color;
-        currentPos = new Point2D.Double(piecex,piecey);
+    public King(String owner, int piecex, int piecey, int piecez) {
+        firstMove = true;
+        color = owner;
+        xcoord = piecex;
+        ycoord = piecey;
         pieceId = piecez;
-        if (owner.equals("black")) {
+        type = "king";
+        if (color.equals("black")) {
             imageLabel.setIcon(blackPiece);
         }
-        if (owner.equals("white")) {
+        if (color.equals("white")) {
             imageLabel.setIcon(whitePiece);
         }
     }
-
+    
     /**
      * Checks if move is in range.
      * @return false as default
      */
-    boolean moveValid(Point2D nextMove) {
-        return false;
-    }
+    int inRange(int nextX, int nextY) {
+        int xcoordCheck = xcoord - nextX;
+        int ycoordCheck = ycoord - nextY;
 
-    /**
-     * Checks if piece is currently causing check.
-     * @return false as default
-     */
-    boolean causingCheck() {
-        return false;
+        if ((xcoordCheck == 0) && (ycoordCheck == 0)) {
+            return 0;
+        } else if ((Math.abs(xcoordCheck) == 1) && (Math.abs(ycoordCheck) == 1)) {
+            firstMove = false;
+            return 1;
+        } else if ((Math.abs(xcoordCheck) == 0) && (Math.abs(ycoordCheck) == 1)) {
+            firstMove = false;
+            return 1;
+        } else if ((Math.abs(xcoordCheck) == 1) && (Math.abs(ycoordCheck) == 0)) {
+            firstMove = false;
+            return 1;
+        }
+        return -1;
     }
     
     /**
@@ -65,5 +65,39 @@ public class King extends Pieces {
      */
     JLabel getImage() {
         return imageLabel;
+    }
+    
+    /**
+     * Gets the color of the current Piece.
+     * @return as a string
+     */
+    String getColor() {
+        return color;
+    }
+    
+    /**
+     * Sets the coordinates for each piece.
+     * @param piecex as an int
+     * @param piecey an an int
+     */
+    void setCoord(int piecex, int piecey) {
+        xcoord = piecex;
+        ycoord = piecey;
+    }
+    
+    /**
+     * Removes the current piece from the square.
+     */
+    void remove() {
+        xcoord = -1;
+        ycoord = -1;
+    }
+    
+    /**
+     * Gets the piece type.
+     * @return as a string
+     */
+    String getType() {
+        return type;
     }
 }

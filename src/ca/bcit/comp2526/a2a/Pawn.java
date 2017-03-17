@@ -1,44 +1,37 @@
 package ca.bcit.comp2526.a2a;
 
-import java.awt.Image;
-import java.awt.geom.Point2D;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
 /**
  * Creates and holds information about pawn pieces.
  * @author Alex
- * @version 0.7
+ * @version 1.0
  */
-
-public class Pawn extends Pieces {
-    boolean killed;
-    String owner;
-    Point2D currentPos;
-    int pieceId;
+@SuppressWarnings("serial")
+public class Pawn extends Piece {
     JLabel imageLabel = new JLabel();
-    ImageIcon blackPiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
-            + "Java/Chess-Game/src/images/pawnBlack.png"
-            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
-    ImageIcon whitePiece = new ImageIcon(new ImageIcon("D:/LocalFiles/Programming/"
-            + "Java/Chess-Game/src/images/pawnWhite.png"
-            ).getImage().getScaledInstance(imageScale, imageScale, Image.SCALE_DEFAULT));
+    ImageIcon blackPiece = new ImageIcon("src/images/pawnBlack.png");
+    ImageIcon whitePiece = new ImageIcon("src/images/pawnWhite.png");
+    boolean firstMove;
+    
     /**
      * Constructor.
-     * @param color as a string
      * @param piecex as an int
      * @param piecey as an int
      * @param piecez as an int
      */
     
-    public Pawn(String color, int piecex, int piecey, int piecez) {
-        killed = false;
-        owner = color;
-        currentPos = new Point2D.Double(piecex,piecey);
+    public Pawn(String owner, int piecex, int piecey, int piecez) {
+        firstMove = true;
+        color = owner;
+        xcoord = piecex;
+        ycoord = piecey;
         pieceId = piecez;
-        if (owner.equals("black")) {
+        type = "pawn";
+        if (color.equals("black")) {
             imageLabel.setIcon(blackPiece);
-        }
-        if (owner.equals("white")) {
+        } else if (color.equals("white")) {
             imageLabel.setIcon(whitePiece);
         }
     }
@@ -47,16 +40,42 @@ public class Pawn extends Pieces {
      * Checks if move is in range.
      * @return false as default
      */
-    boolean moveValid(Point2D nextMove) {
-        return false;
-    }
-
-    /**
-     * Checks if piece is currently causing check.
-     * @return false as default
-     */
-    boolean causingCheck() {
-        return false;
+    int inRange(int nextX, int nextY) {
+        int ycoordCheck = ycoord - nextY;
+        int xcoordCheck = xcoord - nextX;
+        
+        //if pawn didn't move
+        if ((xcoordCheck == 0) && (ycoordCheck == 0)) {
+            return 0;
+        }
+        //if white pawn trying to move 2 spaces
+        if ((xcoordCheck == 0) && (ycoordCheck == 2)) {
+            if ((color.equals("white")) && (firstMove == true)) {
+                firstMove = false;
+                return 1;
+            }
+        }
+        //if white pawn trying to move 1 space
+        else if ((xcoordCheck == 0) && (ycoordCheck == 1)) {
+            if ((color.equals("white"))) {
+                firstMove = false;
+                return 1;
+            }
+        } 
+        //if black pawn trying to move 1 space
+        else if ((xcoordCheck == 0) && (ycoordCheck == -1)) {
+            if ((color.equals("black"))) {
+                firstMove = false;
+                return 1;
+            }
+        //if black pawn trying to move 2 spaces
+        } else if ((xcoordCheck == 0) && (ycoordCheck == -2)) {
+            if ((color.equals("black")) && (firstMove == true)) {
+                firstMove = false;
+                return 1;
+            }
+        }
+        return -1;
     }
     
     /**
@@ -66,5 +85,38 @@ public class Pawn extends Pieces {
     JLabel getImage() {
         return imageLabel;
     }
-
+    
+    /**
+     * Gets the color of the current Piece.
+     * @return as a string
+     */
+    String getColor() {
+        return color;
+    }
+    
+    /**
+     * Sets the coordinates for each piece.
+     * @param piecex as an int
+     * @param piecey an an int
+     */
+    void setCoord(int piecex, int piecey) {
+        xcoord = piecex;
+        ycoord = piecey;
+    }
+    
+    /**
+     * Removes the current piece from the square.
+     */
+    void remove() {
+        xcoord = -1;
+        ycoord = -1;
+    }
+    
+    /**
+     * Gets the piece type.
+     * @return as a string
+     */
+    String getType() {
+        return type;
+    }
 }
